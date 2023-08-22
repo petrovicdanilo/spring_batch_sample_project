@@ -45,7 +45,7 @@ public class SpringBootBatchIntegrationTest {
         JobInstance jobInstance = jobExecution.getJobInstance();
         ExitStatus jobExitStatus = jobExecution.getExitStatus();
 
-        assertEquals("importUserJob", jobInstance.getJobName());
+        assertEquals("importCarsJob", jobInstance.getJobName());
         assertEquals("COMPLETED", jobExitStatus.getExitCode());
     }
 

@@ -52,16 +52,6 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public Job importUserJob(JobRepository jobRepository, JobCompletionNotificationListener listener, Step step1) {
-        return new JobBuilder("importUserJob", jobRepository)
-            .incrementer(new RunIdIncrementer())
-            .listener(listener)
-            .flow(step1)
-            .end()
-            .build();
-    }
-
-    @Bean
     public Step step1(
         JobRepository jobRepository,
         PlatformTransactionManager transactionManager,
@@ -72,6 +62,16 @@ public class BatchConfiguration {
             .reader(carItemReader())
             .processor(carItemProcessor())
             .writer(writer)
+            .build();
+    }
+
+    @Bean
+    public Job importCarsJob(JobRepository jobRepository, JobCompletionNotificationListener listener, Step step1) {
+        return new JobBuilder("importCarsJob", jobRepository)
+            .incrementer(new RunIdIncrementer())
+            .listener(listener)
+            .flow(step1)
+            .end()
             .build();
     }
 
