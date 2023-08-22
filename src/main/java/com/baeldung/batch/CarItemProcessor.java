@@ -2,8 +2,9 @@ package com.baeldung.batch;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.batch.item.ItemProcessor;
 
-public class CarItemProcessor implements org.springframework.batch.item.ItemProcessor<Car, Car> {
+public class CarItemProcessor implements ItemProcessor<Car, Car> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CarItemProcessor.class);
 
