@@ -23,7 +23,7 @@ public class JobCompletionNotificationListener implements JobExecutionListener {
 
     @Override
     public void afterJob(JobExecution jobExecution) {
-        if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
+        if (BatchStatus.COMPLETED.equals(jobExecution.getStatus())) {
             LOGGER.info("!!! JOB FINISHED! Time to verify the results");
 
             String query = "SELECT brand, model FROM car";
